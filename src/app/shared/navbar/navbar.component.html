@@ -1,0 +1,48 @@
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <a routerLink="/" class="text-pink-600 text-2xl font-bold tracking-wide">Parinay</a>
+  
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex gap-6 text-gray-700 font-medium items-center">
+          <a routerLink="/" routerLinkActive="text-pink-600 font-semibold">Home</a>
+          <a routerLink="/about" routerLinkActive="text-pink-600 font-semibold">About</a>
+          <a routerLink="/search" routerLinkActive="text-pink-600 font-semibold">Search</a>
+          <a routerLink="/plans" routerLinkActive="text-pink-600 font-semibold">Plans</a>
+          <a routerLink="/success-stories" routerLinkActive="text-pink-600 font-semibold">Stories</a>
+          <a routerLink="/faqs" routerLinkActive="text-pink-600 font-semibold">FAQs</a>
+          <a routerLink="/contact" routerLinkActive="text-pink-600 font-semibold">Contact</a>
+        </nav>
+  
+        <!-- Desktop Buttons -->
+        <div class="hidden md:flex gap-3 items-center">
+          <a routerLink="/login" class="text-gray-700 hover:text-pink-600 font-medium">Login</a>
+          <a routerLink="/register" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Register</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button (click)="toggleMenu()" class="md:hidden text-pink-600 focus:outline-none">
+          <i class="fas" [ngClass]="menuOpen ? 'fa-times' : 'fa-bars'"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile Nav -->
+    <div *ngIf="menuOpen" class="md:hidden bg-white border-t px-6 pb-6 space-y-4">
+      <a routerLink="/" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Home</a>
+      <a routerLink="/about" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">About</a>
+      <a routerLink="/search" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Search</a>
+      <a routerLink="/plans" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Plans</a>
+      <a routerLink="/success-stories" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Stories</a>
+      <a routerLink="/faqs" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">FAQs</a>
+      <a routerLink="/contact" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Contact</a>
+  
+      <!-- Auth Buttons Mobile -->
+      <div class="pt-4 border-t border-gray-200 flex flex-col gap-2">
+        <a routerLink="/login" (click)="toggleMenu()" class="text-gray-700 font-medium">Login</a>
+        <a routerLink="/register" (click)="toggleMenu()" class="bg-pink-600 text-white text-center py-2 rounded">Register</a>
+      </div>
+    </div>
+  </header>
+  
