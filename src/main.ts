@@ -9,3 +9,4 @@ AOS.init(); // 👈 Initialize scroll animations
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
+  

@@ -1,0 +1,50 @@
+<div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded">
+  <h2 class="text-2xl font-semibold text-center text-pink-600 mb-4">Login to Parinay</h2>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <!-- Email Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Email</label>
+      <input type="email" formControlName="email" 
+             class="mt-1 w-full p-2 border rounded"
+             [class.border-red-500]="f['email'].touched && f['email'].invalid">
+      
+      <div *ngIf="f['email'].touched && f['email'].invalid" class="text-red-500 text-xs mt-1">
+        <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+        <div *ngIf="f['email'].errors?.['email']">Please enter a valid email</div>
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Password</label>
+      <input type="password" formControlName="password" 
+             class="mt-1 w-full p-2 border rounded"
+             [class.border-red-500]="f['password'].touched && f['password'].invalid">
+      
+      <div *ngIf="f['password'].touched && f['password'].invalid" class="text-red-500 text-xs mt-1">
+        <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+        <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters</div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" 
+            class="w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700 disabled:bg-pink-300"
+            [disabled]="loginForm.invalid || isSubmitting">
+      <span *ngIf="!isSubmitting">Login</span>
+      <span *ngIf="isSubmitting" class="flex items-center justify-center">
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Logging in...
+      </span>
+    </button>
+  </form>
+
+  <p class="text-center text-sm mt-4">
+    Don't have an account? 
+    <a routerLink="/register" class="text-pink-600 hover:underline">Register</a>
+  </p>
+</div>

@@ -1,0 +1,18 @@
+<section class="py-20 px-4 max-w-6xl mx-auto text-center">
+    <h1 class="text-4xl font-bold text-pink-600 mb-6">Success Stories</h1>
+    <p class="text-gray-600 mb-12">Real couples who found love on Parinay ❤️</p>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      <div *ngFor="let story of stories" class="bg-white rounded shadow-lg overflow-hidden hover:shadow-xl transition">
+        <img [src]="story.image" alt="{{ story.name }}" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-pink-600">{{ story.name }}</h3>
+          <p class="text-sm text-gray-500 mb-2">{{ story.date }}</p>
+          <p class="text-gray-700 text-sm italic">"{{ story.message }}"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  

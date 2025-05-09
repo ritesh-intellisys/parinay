@@ -1,0 +1,25 @@
+<div class="filter-panel p-4 bg-white shadow rounded-lg grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input type="text" placeholder="Name" [formControl]="filterForm.controls.name">
+    <input type="text" placeholder="Religion" [formControl]="filterForm.controls.religion">
+    <input type="text" placeholder="Location" [formControl]="filterForm.controls.location">
+    <select [formControl]="filterForm.controls.gender">
+      <option value="">Any Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <input type="number" placeholder="Age" [formControl]="filterForm.controls.age">
+    <input type="text" placeholder="Caste" [formControl]="filterForm.controls.caste">
+  </div>
+  
+  <div class="profiles-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+    <div *ngFor="let profile of filteredProfiles; trackBy: trackById" class="relative">
+      <app-profile-card [profile]="profile"></app-profile-card>
+      <button
+        class="absolute top-2 right-2 bg-red-600 text-white px-3 py-1 rounded text-sm shadow"
+        (click)="deleteProfile(profile._id)">
+        Delete
+      </button>
+    </div>
+  </div>
+  

@@ -1,0 +1,48 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="max-w-xl mx-auto p-6 bg-white shadow-md rounded-2xl space-y-5">
+  <h2 class="text-2xl font-semibold text-center text-pink-600">Edit Profile</h2>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Name</label>
+    <input formControlName="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Age</label>
+    <input type="number" formControlName="age" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Gender</label>
+    <select formControlName="gender" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Religion</label>
+    <input formControlName="religion" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Location</label>
+    <input formControlName="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Caste</label>
+    <input formControlName="caste" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">Profile Photo</label>
+    <input type="file" (change)="onFileSelected($event)" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100" />
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="px-6 py-2 text-white bg-pink-600 hover:bg-pink-700 rounded-full shadow-md transition-all duration-300">
+      Save Profile
+    </button>
+  </div>
+</form>

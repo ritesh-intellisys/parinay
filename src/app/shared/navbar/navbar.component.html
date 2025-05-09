@@ -7,9 +7,10 @@
         <!-- Desktop Nav -->
         <nav class="hidden md:flex gap-6 text-gray-700 font-medium items-center">
           <a routerLink="/" routerLinkActive="text-pink-600 font-semibold">Home</a>
+          <a routerLink="/profiles" routerLinkActive="active">Profiles</a>
           <a routerLink="/about" routerLinkActive="text-pink-600 font-semibold">About</a>
           <a routerLink="/search" routerLinkActive="text-pink-600 font-semibold">Search</a>
-          <a routerLink="/plans" routerLinkActive="text-pink-600 font-semibold">Plans</a>
+          <a routerLink="/subscription" routerLinkActive="text-pink-600 font-semibold">Plans</a> <!-- ✅ Updated -->
           <a routerLink="/success-stories" routerLinkActive="text-pink-600 font-semibold">Stories</a>
           <a routerLink="/faqs" routerLinkActive="text-pink-600 font-semibold">FAQs</a>
           <a routerLink="/contact" routerLinkActive="text-pink-600 font-semibold">Contact</a>
@@ -33,7 +34,7 @@
       <a routerLink="/" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Home</a>
       <a routerLink="/about" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">About</a>
       <a routerLink="/search" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Search</a>
-      <a routerLink="/plans" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Plans</a>
+      <a routerLink="/subscription" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Plans</a> <!-- ✅ Updated -->
       <a routerLink="/success-stories" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Stories</a>
       <a routerLink="/faqs" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">FAQs</a>
       <a routerLink="/contact" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Contact</a>
