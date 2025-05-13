@@ -1,32 +1,133 @@
-<section class="bg-gray-50 py-16 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <h1 class="text-4xl font-bold text-pink-600 mb-8">Frequently Asked Questions</h1>
-  
-      <div class="space-y-6 text-left">
-        <details class="bg-white p-6 rounded shadow-md cursor-pointer group">
-          <summary class="font-semibold text-lg flex justify-between items-center">
-            How do I register?
-            <i class="fas fa-chevron-down text-pink-600 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-gray-600 mt-3">Click on the "Register" button at the top of the page and fill in your details to get started.</p>
-        </details>
-  
-        <details class="bg-white p-6 rounded shadow-md cursor-pointer group">
-          <summary class="font-semibold text-lg flex justify-between items-center">
-            Are all profiles verified?
-            <i class="fas fa-chevron-down text-pink-600 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-gray-600 mt-3">Yes, all profiles go through a strict verification process for your safety and privacy.</p>
-        </details>
-  
-        <details class="bg-white p-6 rounded shadow-md cursor-pointer group">
-          <summary class="font-semibold text-lg flex justify-between items-center">
-            How can I contact a match?
-            <i class="fas fa-chevron-down text-pink-600 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-gray-600 mt-3">After logging in, click on a profile you're interested in and choose a contact option.</p>
-        </details>
+<section class="relative py-24 px-6 bg-gradient-to-b from-white via-rose-50 to-white">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-10">
+    <div class="absolute top-20 right-20 w-60 h-60 rounded-full bg-pink-200 blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-80 h-80 rounded-full bg-rose-100 blur-3xl"></div>
+  </div>
+
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-500 mb-4 font-serif">
+        Your Questions Answered
+      </h1>
+      <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+        Everything you need to know about finding your perfect match on Parinay.
+      </p>
+    </div>
+
+    <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+      <!-- FAQ Item 1 -->
+      <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <button class="w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none">
+          <h3 class="text-xl font-bold text-gray-800 group-hover:text-pink-600 transition-colors">How do I register on Parinay?</h3>
+          <div class="ml-4 flex-shrink-0">
+            <i class="fas fa-plus text-pink-500 group-has-[:checked]:hidden block"></i>
+            <i class="fas fa-minus text-pink-500 group-has-[:checked]:block hidden"></i>
+          </div>
+        </button>
+        <div class="px-6 pb-6 md:px-8 md:pb-8 pt-0 hidden group-has-[:checked]:block">
+          <p class="text-gray-600">
+            Getting started is easy! Click the "Register" button at the top of any page, fill in your basic details,
+            and complete our 5-step profile setup process. You'll be guided through each step with clear instructions.
+            Our team manually reviews each profile within 24 hours for authenticity before activation.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <button class="w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none">
+          <h3 class="text-xl font-bold text-gray-800 group-hover:text-pink-600 transition-colors">Are all profiles verified?</h3>
+          <div class="ml-4 flex-shrink-0">
+            <i class="fas fa-plus text-pink-500 group-has-[:checked]:hidden block"></i>
+            <i class="fas fa-minus text-pink-500 group-has-[:checked]:block hidden"></i>
+          </div>
+        </button>
+        <div class="px-6 pb-6 md:px-8 md:pb-8 pt-0 hidden group-has-[:checked]:block">
+          <p class="text-gray-600 mb-4">
+            Yes, every profile undergoes our comprehensive 5-step verification process:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-gray-600">
+            <li>Email and mobile number verification</li>
+            <li>Photo ID authentication</li>
+            <li>Manual profile review by our team</li>
+            <li>AI-powered fraud detection</li>
+            <li>Ongoing activity monitoring</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <button class="w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none">
+          <h3 class="text-xl font-bold text-gray-800 group-hover:text-pink-600 transition-colors">How does your matching algorithm work?</h3>
+          <div class="ml-4 flex-shrink-0">
+            <i class="fas fa-plus text-pink-500 group-has-[:checked]:hidden block"></i>
+            <i class="fas fa-minus text-pink-500 group-has-[:checked]:block hidden"></i>
+          </div>
+        </button>
+        <div class="px-6 pb-6 md:px-8 md:pb-8 pt-0 hidden group-has-[:checked]:block">
+          <p class="text-gray-600 mb-4">
+            Our proprietary matching system analyzes over 50 compatibility factors across 5 key dimensions:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="bg-pink-50 rounded-lg p-4">
+              <h4 class="font-semibold text-pink-600 mb-2">Core Values</h4>
+              <p class="text-sm text-gray-600">Religion, family values, life goals</p>
+            </div>
+            <div class="bg-pink-50 rounded-lg p-4">
+              <h4 class="font-semibold text-pink-600 mb-2">Lifestyle</h4>
+              <p class="text-sm text-gray-600">Hobbies, dietary preferences, habits</p>
+            </div>
+            <div class="bg-pink-50 rounded-lg p-4">
+              <h4 class="font-semibold text-pink-600 mb-2">Personality</h4>
+              <p class="text-sm text-gray-600">Traits, communication style, temperament</p>
+            </div>
+            <div class="bg-pink-50 rounded-lg p-4">
+              <h4 class="font-semibold text-pink-600 mb-2">Background</h4>
+              <p class="text-sm text-gray-600">Education, profession, family details</p>
+            </div>
+          </div>
+          <p class="text-gray-600">
+            The algorithm continuously learns from successful matches to improve recommendations.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <button class="w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none">
+          <h3 class="text-xl font-bold text-gray-800 group-hover:text-pink-600 transition-colors">What safety features do you offer?</h3>
+          <div class="ml-4 flex-shrink-0">
+            <i class="fas fa-plus text-pink-500 group-has-[:checked]:hidden block"></i>
+            <i class="fas fa-minus text-pink-500 group-has-[:checked]:block hidden"></i>
+          </div>
+        </button>
+        <div class="px-6 pb-6 md:px-8 md:pb-8 pt-0 hidden group-has-[:checked]:block">
+          <p class="text-gray-600 mb-4">
+            Your safety is our top priority. We offer multiple layers of protection:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-gray-600">
+            <li>Controlled communication through our secure messaging system</li>
+            <li>Option to hide personal contact details until ready</li>
+            <li>24/7 moderation team monitoring all interactions</li>
+            <li>Instant reporting system for suspicious activity</li>
+            <li>Photo protection with watermarks and download prevention</li>
+            <li>Dedicated safety resources and guidance</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </section>
-  
+
+    <!-- CTA Section -->
+    <div class="mt-16 text-center" data-aos="fade-up">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Still have questions?</h3>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        Our matchmaking experts are available 24/7 to assist you with any queries.
+      </p>
+      <a href="/contact" class="inline-block bg-gradient-to-r from-rose-600 to-pink-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:from-rose-700 hover:to-pink-600 transition-all duration-300">
+        Contact Our Team <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>

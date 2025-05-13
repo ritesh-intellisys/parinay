@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilesService } from '../../services/profiles.service';
 import { Profile } from '../../models/profile.model';
 import { debounceTime } from 'rxjs/operators';
-import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
+import { ProfileCardComponent } from '../../components/profiles/profile-card.component';
 
 @Component({
   selector: 'app-profiles',
@@ -47,8 +47,8 @@ export class ProfilesComponent implements OnInit {
   applyFilters(filters: any) {
     this.filteredProfiles = this.allProfiles.filter(profile => {
       const matchesName = !filters.name || profile.name.toLowerCase().includes(filters.name.toLowerCase());
-      const matchesReligion = !filters.religion || profile.religion.toLowerCase().includes(filters.religion.toLowerCase());
-      const matchesLocation = !filters.location || profile.location.toLowerCase().includes(filters.location.toLowerCase());
+      const matchesReligion = !filters.religion || (profile.religion?.toLowerCase() || '').includes(filters.religion.toLowerCase());
+      const matchesLocation = !filters.location || (profile.location?.toLowerCase() ?? '').includes(filters.location.toLowerCase());
       const matchesGender = !filters.gender || profile.gender === filters.gender;
       const matchesCaste = !filters.caste || (profile.caste || '').toLowerCase().includes(filters.caste.toLowerCase());
       const matchesAge = !filters.age || profile.age === filters.age;

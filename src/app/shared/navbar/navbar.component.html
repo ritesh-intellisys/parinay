@@ -1,49 +1,150 @@
-<header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <!-- Logo -->
-        <a routerLink="/" class="text-pink-600 text-2xl font-bold tracking-wide">Parinay</a>
-  
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex gap-6 text-gray-700 font-medium items-center">
-          <a routerLink="/" routerLinkActive="text-pink-600 font-semibold">Home</a>
-          <a routerLink="/profiles" routerLinkActive="active">Profiles</a>
-          <a routerLink="/about" routerLinkActive="text-pink-600 font-semibold">About</a>
-          <a routerLink="/search" routerLinkActive="text-pink-600 font-semibold">Search</a>
-          <a routerLink="/subscription" routerLinkActive="text-pink-600 font-semibold">Plans</a> <!-- ✅ Updated -->
-          <a routerLink="/success-stories" routerLinkActive="text-pink-600 font-semibold">Stories</a>
-          <a routerLink="/faqs" routerLinkActive="text-pink-600 font-semibold">FAQs</a>
-          <a routerLink="/contact" routerLinkActive="text-pink-600 font-semibold">Contact</a>
-        </nav>
-  
-        <!-- Desktop Buttons -->
-        <div class="hidden md:flex gap-3 items-center">
-          <a routerLink="/login" class="text-gray-700 hover:text-pink-600 font-medium">Login</a>
-          <a routerLink="/register" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Register</a>
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300 border-b border-gray-100 hover:shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3">
+      <!-- Logo with gradient and animation -->
+      <a routerLink="/" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 text-2xl font-bold tracking-wide hover:scale-105 transition-transform duration-200">
+        <span class="inline-block">Parinay</span>
+        <span class="text-xs align-top bg-pink-600 text-white px-1.5 py-0.5 rounded-full ml-1 animate-pulse">Premium</span>
+      </a>
+
+      <!-- Desktop Nav with hover effects -->
+      <nav class="hidden md:flex gap-8 text-gray-700 font-medium items-center">
+        <a routerLink="/" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>Home</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/profiles" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>Profiles</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/about" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>About</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/search" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>Search</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/subscription" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span class="flex items-center">
+            Plans
+            <span class="ml-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs px-2 py-0.5 rounded-full">New</span>
+          </span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/success-stories" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>Stories</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/faqs" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>FAQs</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <a routerLink="/contact" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>Contact</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Desktop Buttons with premium styling -->
+      <div class="hidden md:flex gap-4 items-center">
+        <a routerLink="/login" 
+           class="text-gray-700 hover:text-pink-600 font-medium px-3 py-1.5 rounded-lg transition-colors duration-200 hover:bg-gray-50">
+          Login
+        </a>
+        <a routerLink="/register" 
+           class="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-600 text-white px-5 py-2.5 rounded-lg font-medium hover:shadow-lg transition-all duration-300 group">
+          <span class="relative z-10">Register</span>
+          <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button with animation -->
+      <button (click)="toggleMenu()" class="md:hidden focus:outline-none transition-all duration-200">
+        <div class="space-y-1.5">
+          <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                [class]="menuOpen ? 'rotate-45 translate-y-2' : ''"></span>
+          <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                [class]="menuOpen ? 'opacity-0' : 'opacity-100'"></span>
+          <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                [class]="menuOpen ? '-rotate-45 -translate-y-2' : ''"></span>
         </div>
-  
-        <!-- Mobile Menu Button -->
-        <button (click)="toggleMenu()" class="md:hidden text-pink-600 focus:outline-none">
-          <i class="fas" [ngClass]="menuOpen ? 'fa-times' : 'fa-bars'"></i>
-        </button>
-      </div>
+      </button>
     </div>
-  
-    <!-- Mobile Nav -->
-    <div *ngIf="menuOpen" class="md:hidden bg-white border-t px-6 pb-6 space-y-4">
-      <a routerLink="/" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Home</a>
-      <a routerLink="/about" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">About</a>
-      <a routerLink="/search" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Search</a>
-      <a routerLink="/subscription" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Plans</a> <!-- ✅ Updated -->
-      <a routerLink="/success-stories" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Stories</a>
-      <a routerLink="/faqs" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">FAQs</a>
-      <a routerLink="/contact" (click)="toggleMenu()" class="block text-gray-700 hover:text-pink-600">Contact</a>
-  
-      <!-- Auth Buttons Mobile -->
-      <div class="pt-4 border-t border-gray-200 flex flex-col gap-2">
-        <a routerLink="/login" (click)="toggleMenu()" class="text-gray-700 font-medium">Login</a>
-        <a routerLink="/register" (click)="toggleMenu()" class="bg-pink-600 text-white text-center py-2 rounded">Register</a>
-      </div>
+  </div>
+
+  <!-- Mobile Nav with elegant animation -->
+  <div *ngIf="menuOpen" 
+       class="md:hidden bg-white/95 backdrop-blur-sm px-6 pb-6 space-y-3 animate-fade-in-down border-t border-gray-100">
+    <a routerLink="/" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      Home
+    </a>
+    <a routerLink="/profiles" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      Profiles
+    </a>
+    <a routerLink="/about" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      About
+    </a>
+    <a routerLink="/search" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      Search
+    </a>
+    <a routerLink="/subscription" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      <span class="flex items-center">
+        Plans
+        <span class="ml-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs px-2 py-0.5 rounded-full">New</span>
+      </span>
+    </a>
+    <a routerLink="/success-stories" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      Stories
+    </a>
+    <a routerLink="/faqs" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      FAQs
+    </a>
+    <a routerLink="/contact" (click)="toggleMenu()" 
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      Contact
+    </a>
+
+    <!-- Auth Buttons Mobile with better spacing -->
+    <div class="pt-4 border-t border-gray-200 flex flex-col gap-3">
+      <a routerLink="/login" (click)="toggleMenu()" 
+         class="text-center py-2 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        Login
+      </a>
+      <a routerLink="/register" (click)="toggleMenu()" 
+         class="text-center py-2.5 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg font-medium hover:shadow-md transition-all duration-300">
+        Register
+      </a>
     </div>
-  </header>
-  
+  </div>
+</header>
