@@ -28,4 +28,8 @@ export class ProfilesService {
   deleteProfile(id: string): Observable<{ success: boolean }> {
     return this.http.delete<{ success: boolean }>(`${this.baseUrl}/${id}`);
   }
+  getCurrentUser(): Profile | null {
+   
+    return null; 
+  }
 }

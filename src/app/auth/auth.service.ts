@@ -1,99 +1,129 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, catchError, tap, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, UserCredential } from 'firebase/auth';
+import { authState } from '@angular/fire/auth';
+import { User } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db, googleProvider, facebookProvider } from '../core/firebase-config';
+import { Observable, from, switchMap, of, tap } from 'rxjs';
 
-interface LoginResponse {
-  token: string;
-  user: {
-    fullName: string;
-    email: string;
-    [key: string]: any; // other user properties
-  };
+interface UserProfile {
+  uid: string;
+  fullName: string;
+  email: string;
+  age?: number;
+  city?: string;
+  gender?: string;
+  religion?: string;
+  caste?: string;
+  height?: string;
+  about?: string;
+  occupation?: string;
+  education?: string;
+  photoURL?: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/auth';
-  private tokenKey = 'authToken';
-  private userKey = 'currentUser';
+  private router = inject(Router);
+  private toastr = inject(ToastrService);
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private toastr: ToastrService
-  ) {}
+  // Firebase auth state observable
+  authState$: Observable<User | null> = authState(auth);
+  
 
   /**
-   * Login user and store token/user info on success.
+   * Login with email/password
    */
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap((response) => {
-        if (response.token && response.user) {
-          localStorage.setItem(this.tokenKey, response.token);
-          localStorage.setItem(this.userKey, JSON.stringify(response.user));
-          this.toastr.success('Login successful', `Welcome back, ${response.user.fullName}!`);
-          this.router.navigate(['/dashboard']);
-        }
-      }),
-      catchError(error => {
-        const message = error.error?.message || 'Login failed';
-        this.toastr.error(message, 'Error');
-        return throwError(() => new Error(message));
+  login(email: string, password: string): Observable<void> {
+    return from(signInWithEmailAndPassword(auth, email, password)).pipe(
+      switchMap((userCredential) => this.handleAuthSuccess(userCredential))
+    );
+  }
+
+  /**
+   * Register new user
+   */
+  register(userData: any): Observable<void> {
+    return from(createUserWithEmailAndPassword(auth, userData.email, userData.password)).pipe(
+      switchMap((userCredential) => {
+        // Update Firebase user profile with display name
+        return from(updateProfile(userCredential.user, {
+          displayName: userData.fullName
+        })).pipe(
+          switchMap(() => {
+            // Create user document in Firestore
+            const userProfile: UserProfile = {
+              uid: userCredential.user.uid,
+              fullName: userData.fullName,
+              email: userData.email,
+              gender: userData.gender,
+              age: userData.age,
+              city: userData.city
+            };
+            
+            return from(setDoc(doc(db, 'users', userCredential.user.uid), userProfile));
+          }),
+          switchMap(() => this.handleAuthSuccess(userCredential))
+        );
       })
     );
   }
 
   /**
-   * Register user and navigate to login on success.
+   * Google login
    */
-  register(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData).pipe(
+  loginWithGoogle(): Observable<void> {
+    return from(signInWithPopup(auth, googleProvider)).pipe(
+      switchMap((userCredential) => this.handleAuthSuccess(userCredential))
+    );
+  }
+
+  /**
+   * Facebook login
+   */
+  loginWithFacebook(): Observable<void> {
+    return from(signInWithPopup(auth, facebookProvider)).pipe(
+      switchMap((userCredential) => this.handleAuthSuccess(userCredential))
+    );
+  }
+
+  /**
+   * Logout
+   */
+  logout(): Observable<void> {
+    return from(signOut(auth)).pipe(
       tap(() => {
-        this.toastr.success('Registration successful', 'Welcome!');
         this.router.navigate(['/login']);
-      }),
-      catchError(error => {
-        const message = error.error?.message || 'Registration failed';
-        this.toastr.error(message, 'Error');
-        return throwError(() => new Error(message));
+        this.toastr.info('You have been logged out', 'Goodbye');
       })
     );
   }
 
   /**
-   * Logs out the user.
+   * Get current user
    */
-  logout(): void {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.userKey);
-    this.router.navigate(['/login']);
-    this.toastr.info('You have been logged out', 'Goodbye');
+  getCurrentUser() {
+    return auth.currentUser;
   }
 
   /**
-   * Returns stored JWT token.
-   */
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  /**
-   * Returns currently logged in user.
-   */
-  getCurrentUser(): any {
-    const user = localStorage.getItem(this.userKey);
-    return user ? JSON.parse(user) : null;
-  }
-
-  /**
-   * Checks whether the user is logged in.
+   * Check if user is authenticated
    */
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!auth.currentUser;
+  }
+
+  /**
+   * Handle successful authentication
+   */
+  private handleAuthSuccess(userCredential: UserCredential): Observable<void> {
+    const user = userCredential.user;
+    this.toastr.success('Authentication successful', `Welcome ${user.displayName || 'User'}!`);
+    this.router.navigate(['/dashboard']);
+    return of(undefined);
   }
 }

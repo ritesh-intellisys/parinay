@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -46,15 +47,12 @@ export class RegisterComponent {
     this.isSubmitting = true;
     
     this.authService.register(this.registerForm.value).subscribe({
-      next: (response) => {
-        this.toastr.success('Account created successfully!', 'Success');
-        this.registerForm.reset();
-        this.router.navigate(['/login']);
+      next: () => {
+        this.isSubmitting = false;
       },
       error: (error) => {
-        const errorMsg = error.error?.message || 'Registration failed. Please try again.';
-        this.toastr.error(errorMsg, 'Error');
         this.isSubmitting = false;
+        this.toastr.error(error.message || 'Registration failed. Please try again.', 'Error');
       }
     });
   }

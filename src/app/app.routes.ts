@@ -38,5 +38,10 @@ export const routes: Routes = [
     // canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/profile-editor/profile-editor.component').then(m => m.ProfileEditComponent),
+  },
+  { 
+    path: 'my-profile', 
+    loadComponent: () => import('./pages/my-profile/my-profile.component').then(m => m.MyProfileComponent),
+    canActivate: [AuthGuard]
   }
 ];

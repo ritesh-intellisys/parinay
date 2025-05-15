@@ -12,4 +12,3 @@ export interface Profile {
     religion?: string;
     caste?: string;
   }
-  

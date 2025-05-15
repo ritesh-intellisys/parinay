@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, FontAwesomeModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -36,16 +36,38 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe({
-      next: (res) => {
+      next: () => {
         this.isSubmitting = false;
+        // Redirect to desired route after successful login
+        this.router.navigate(['/profiles']); 
         this.toastr.success('Login successful!');
-        localStorage.setItem('token', res.token); // Store JWT
-        this.router.navigate(['/']); // Navigate to homepage or dashboard
       },
       error: (err) => {
         this.isSubmitting = false;
-        this.toastr.error(err.error.message || 'Invalid email or password');
+        this.toastr.error(err.message || 'Invalid email or password');
       }
+    });
+  }
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle().subscribe({
+      next: () => {
+        // Redirect to desired route after successful Google login
+        this.router.navigate(['/profiles']); 
+        this.toastr.success('Google login successful!');
+      },
+      error: (err) => this.toastr.error(err.message || 'Google login failed')
+    });
+  }
+
+  loginWithFacebook() {
+    this.authService.loginWithFacebook().subscribe({
+      next: () => {
+        // Redirect to desired route after successful Facebook login
+        this.router.navigate(['/profiles']); 
+        this.toastr.success('Facebook login successful!');
+      },
+      error: (err) => this.toastr.error(err.message || 'Facebook login failed')
     });
   }
 
