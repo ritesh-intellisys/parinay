@@ -1,0 +1,606 @@
+<!-- Profiles Page -->
+<div class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <section class="relative text-white py-24 px-6 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 font-serif tracking-tight">Find Your Perfect Match</h1>
+      <p class="text-xl md:text-2xl mb-8 font-light">Browse through our exclusive collection of verified profiles</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Filters Sidebar -->
+      <div class="lg:w-1/4">
+        <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-6">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">Filters</h2>
+            <button class="text-pink-500 text-sm font-medium">Reset All</button>
+          </div>
+
+          <!-- Premium Filters Accordion -->
+          <div class="space-y-6">
+            <!-- Basic Filters -->
+            <div class="border-b border-gray-200 pb-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Basic Preferences</h3>
+              
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Looking for</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Bride</option>
+                    <option>Groom</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Age Range</label>
+                  <div class="flex items-center gap-2">
+                    <input type="number" placeholder="Min" class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent" />
+                    <span class="text-gray-500">to</span>
+                    <input type="number" placeholder="Max" class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Height</label>
+                  <div class="grid grid-cols-2 gap-2">
+                    <select class="border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                      <option>Min</option>
+                      <option>4'5"</option>
+                      <option>4'6"</option>
+                      <!-- More options -->
+                    </select>
+                    <select class="border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                      <option>Max</option>
+                      <option>5'5"</option>
+                      <option>5'6"</option>
+                      <!-- More options -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Religious Filters -->
+            <div class="border-b border-gray-200 pb-6">
+              <div class="flex justify-between items-center mb-4 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-800">Religion & Community</h3>
+                <i class="fas fa-chevron-down text-gray-500"></i>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Religion</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Hindu</option>
+                    <option>Muslim</option>
+                    <option>Christian</option>
+                    <option>Sikh</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Caste</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Brahmin</option>
+                    <option>Kshatriya</option>
+                    <option>Vaishya</option>
+                    <option>Shudra</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Mother Tongue</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Hindi</option>
+                    <option>Bengali</option>
+                    <option>Tamil</option>
+                    <option>Telugu</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Filters -->
+            <div class="border-b border-gray-200 pb-6">
+              <div class="flex justify-between items-center mb-4 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-800">Professional Details</h3>
+                <i class="fas fa-chevron-down text-gray-500"></i>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Education</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Bachelors</option>
+                    <option>Masters</option>
+                    <option>PhD</option>
+                    <option>Professional Degree</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Occupation</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Doctor</option>
+                    <option>Engineer</option>
+                    <option>Business</option>
+                    <option>Government</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Annual Income</label>
+                  <select class="w-full border-2 border-gray-200 p-3 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option>Any</option>
+                    <option>Below 5 LPA</option>
+                    <option>5-10 LPA</option>
+                    <option>10-20 LPA</option>
+                    <option>20-50 LPA</option>
+                    <option>50+ LPA</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lifestyle Filters -->
+            <div class="pb-6">
+              <div class="flex justify-between items-center mb-4 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-800">Lifestyle</h3>
+                <i class="fas fa-chevron-down text-gray-500"></i>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Diet</label>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Vegetarian</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Non-Vegetarian</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Eggetarian</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Vegan</button>
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Drinking</label>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Never</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Occasionally</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Regularly</button>
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Smoking</label>
+                  <div class="flex flex-wrap gap-2">
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Never</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Occasionally</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">Regularly</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="w-full bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition">
+              Apply Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profiles Listing -->
+      <div class="lg:w-3/4">
+        <!-- Sorting and View Options -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-6">
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-600">
+              Showing <span class="font-bold">1-12</span> of <span class="font-bold">68</span> matches
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="flex items-center">
+                <label class="mr-2 text-sm font-medium text-gray-700">Sort by:</label>
+                <select class="border-2 border-gray-200 p-2 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm">
+                  <option>Recommended</option>
+                  <option>Newest First</option>
+                  <option>Recently Active</option>
+                  <option>Highest Income</option>
+                  <option>Most Educated</option>
+                </select>
+              </div>
+              
+              <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+                <button class="p-2 bg-white text-gray-700 hover:bg-gray-100">
+                  <i class="fas fa-th-large"></i>
+                </button>
+                <button class="p-2 bg-gray-100 text-pink-500">
+                  <i class="fas fa-list"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Premium Badge -->
+        <div class="bg-gradient-to-r from-amber-400 to-amber-500 text-white rounded-2xl shadow-lg p-4 mb-6 flex items-center">
+          <div class="bg-white/20 p-2 rounded-lg mr-4">
+            <i class="fas fa-crown text-xl"></i>
+          </div>
+          <div>
+            <h3 class="font-bold">Premium Members</h3>
+            <p class="text-sm opacity-90">Unlock all profiles and advanced matching features</p>
+          </div>
+          <a href="/premium" class="ml-auto bg-white text-amber-600 font-bold px-4 py-2 rounded-lg text-sm hover:bg-gray-100 transition">
+            Upgrade Now
+          </a>
+        </div>
+        
+        <!-- Profiles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Profile Card 1 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://res.cloudinary.com/www-lovevivah-com/image/upload/c_fill,f_auto,g_face,h_292,w_252/v1/photos/CFR_P1410270_1716808399.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 left-3">
+                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">Premium</span>
+              </div>
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Priya Sharma, 27</h3>
+                <span class="text-sm text-gray-500">ID: PM12345</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Software Engineer | Bangalore
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Brahmin</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MBA</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">5'4"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Bangalore</span>
+                <span><i class="fas fa-clock mr-1"></i> Active today</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- Profile Card 2 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://res.cloudinary.com/www-lovevivah-com/image/upload/c_fill,f_auto,g_face,h_292,w_252/v1/photos/CFR_P1391680_1657895952.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Rahul Patel, 31</h3>
+                <span class="text-sm text-gray-500">ID: PM12346</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Doctor | Mumbai
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Patel</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MD</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">5'11"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Mumbai</span>
+                <span><i class="fas fa-clock mr-1"></i> Active 2d ago</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- Profile Card 3 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://res.cloudinary.com/www-lovevivah-com/image/upload/c_fill,f_auto,g_face,h_292,w_252/v1/photos/CFR_P1396006_1668165135.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 left-3">
+                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">Premium</span>
+              </div>
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Ananya Reddy, 25</h3>
+                <span class="text-sm text-gray-500">ID: PM12347</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Architect | Hyderabad
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Reddy</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">B.Arch</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">5'5"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Hyderabad</span>
+                <span><i class="fas fa-clock mr-1"></i> Active now</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- More profile cards would continue here -->
+          <!-- I'll show 3 more as examples, but in reality you'd have 60+ -->
+          
+          <!-- Profile Card 4 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://fotos.rishtonkasansar.com/partyImage/211188.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Arjun Singh, 29</h3>
+                <span class="text-sm text-gray-500">ID: PM12348</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Investment Banker | Delhi
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Rajput</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MBA</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">6'0"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Delhi</span>
+                <span><i class="fas fa-clock mr-1"></i> Active 1h ago</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- Profile Card 5 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://fotos.rishtonkasansar.com/partyImage/564484_party836564484_1.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 left-3">
+                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">Premium</span>
+              </div>
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Neha Gupta, 28</h3>
+                <span class="text-sm text-gray-500">ID: PM12349</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Fashion Designer | Mumbai
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Agarwal</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">B.Des</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">5'3"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Mumbai</span>
+                <span><i class="fas fa-clock mr-1"></i> Active yesterday</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- Profile Card 6 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="relative">
+              <img src="https://www.imilap.com/profileimages/profile_FB_IMG_14589085298904728.jpg" alt="Profile" class="w-full h-64 object-cover">
+              <div class="absolute top-3 right-3 flex gap-2">
+                <button class="bg-white/90 p-2 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <button class="bg-white/90 p-2 rounded-full text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                  <i class="fas fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-800">Vikram Joshi, 30</h3>
+                <span class="text-sm text-gray-500">ID: PM12350</span>
+              </div>
+              <p class="text-gray-600 mb-3 flex items-center">
+                <i class="fas fa-briefcase text-pink-500 mr-2"></i> Civil Servant | Delhi
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Brahmin</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">IAS</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">5'9"</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-500 mb-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Delhi</span>
+                <span><i class="fas fa-clock mr-1"></i> Active 3d ago</span>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                View Profile
+              </button>
+            </div>
+          </div>
+          
+          <!-- Note: In a real implementation, you would have 60+ profile cards here -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center">
+          <nav class="inline-flex rounded-md shadow">
+            <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-l-md hover:bg-gray-50">
+              <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+              1
+            </a>
+            <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+              2
+            </a>
+            <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+              3
+            </a>
+            <span class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700">
+              ...
+            </span>
+            <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+              8
+            </a>
+            <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-r-md hover:bg-gray-50">
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Premium Membership CTA -->
+<section class="py-16 bg-gradient-to-r from-amber-500 to-amber-600 text-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Unlock All Premium Features</h2>
+    <p class="text-xl mb-8 max-w-3xl mx-auto">Get unlimited access to all profiles, advanced search filters, and priority customer support</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-12">
+      <!-- Plan 1 -->
+      <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-105">
+        <h3 class="text-2xl font-bold mb-4">3 Months</h3>
+        <div class="text-4xl font-bold mb-6">₹2,999</div>
+        <ul class="space-y-3 mb-8 text-left">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Unlimited Profile Views
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Advanced Search Filters
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Priority Listing
+          </li>
+        </ul>
+        <button class="w-full bg-white text-amber-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition">
+          Choose Plan
+        </button>
+      </div>
+      
+      <!-- Plan 2 (Featured) -->
+      <div class="bg-white/20 backdrop-blur-sm p-8 rounded-2xl border-2 border-amber-300 transform scale-[1.03] relative">
+        <div class="absolute top-0 right-0 bg-amber-300 text-amber-800 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">BEST VALUE</div>
+        <h3 class="text-2xl font-bold mb-4">6 Months</h3>
+        <div class="text-4xl font-bold mb-6">₹4,999 <span class="text-lg line-through opacity-70">₹5,998</span></div>
+        <ul class="space-y-3 mb-8 text-left">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Everything in 3 Months
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Profile Highlight
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> 10x More Visibility
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Dedicated Match Expert
+          </li>
+        </ul>
+        <button class="w-full bg-amber-300 text-amber-800 font-bold py-3 rounded-lg hover:bg-amber-400 transition">
+          Choose Plan
+        </button>
+      </div>
+      
+      <!-- Plan 3 -->
+      <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-105">
+        <h3 class="text-2xl font-bold mb-4">12 Months</h3>
+        <div class="text-4xl font-bold mb-6">₹8,999 <span class="text-lg line-through opacity-70">₹11,996</span></div>
+        <ul class="space-y-3 mb-8 text-left">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Everything in 6 Months
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Verified Badge
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Personal Matchmaking
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-amber-300"></i> Profile Boosts
+          </li>
+        </ul>
+        <button class="w-full bg-white text-amber-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition">
+          Choose Plan
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Final CTA -->
+<section class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto text-center px-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Need Help Finding Your Match?</h2>
+    <p class="text-xl mb-10 text-gray-600">Our relationship experts are here to guide you through your matrimonial journey</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="/contact" class="bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold px-10 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+        Talk to Match Expert
+      </a>
+      <a href="tel:+919876543210" class="border-2 border-gray-800 text-gray-800 font-bold px-10 py-4 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300">
+        <i class="fas fa-phone-alt mr-2"></i> Call Now
+      </a>
+    </div>
+  </div>
+</section>
+

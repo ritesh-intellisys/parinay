@@ -1,0 +1,207 @@
+<div class="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 flex items-center justify-center p-4">
+  <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <!-- Decorative Header -->
+    <div class="relative h-48 bg-gradient-to-r from-rose-600 to-pink-500 flex items-center justify-center">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')] bg-cover bg-center opacity-20"></div>
+      <div class="relative z-10 text-center p-6">
+        <h1 class="text-3xl md:text-4xl font-bold text-white font-serif">Begin Your Journey</h1>
+        <p class="text-pink-100 mt-2">Create your account and find your perfect match</p>
+      </div>
+    </div>
+
+    <div class="p-8 md:p-10">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Two Column Layout for Name and Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Full Name -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <div class="relative">
+              <input type="text" formControlName="fullName" 
+                     class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                     [class.ring-2.ring-red-500]="f['fullName'].touched && f['fullName'].errors"
+                     placeholder="Enter your full name">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-user text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['fullName'].touched && f['fullName'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['fullName'].errors?.['required']">Full name is required</div>
+              <div *ngIf="f['fullName'].errors?.['minlength']">Minimum 3 characters required</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <div class="relative">
+              <input type="email" formControlName="email" 
+                     class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                     [class.ring-2.ring-red-500]="f['email'].touched && f['email'].errors"
+                     placeholder="your@email.com">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-envelope text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['email'].touched && f['email'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+              <div *ngIf="f['email'].errors?.['email']">Please enter a valid email</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Column Layout for Password Fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Password -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <div class="relative">
+              <input type="password" formControlName="password" 
+                     class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                     [class.ring-2.ring-red-500]="f['password'].touched && f['password'].errors"
+                     placeholder="••••••••">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['password'].touched && f['password'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+              <div *ngIf="f['password'].errors?.['minlength']">Minimum 6 characters required</div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+            <div class="relative">
+              <input type="password" formControlName="confirmPassword" 
+                     class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                     [class.ring-2.ring-red-500]="f['confirmPassword'].touched && f['confirmPassword'].errors"
+                     placeholder="••••••••">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['confirmPassword'].errors?.['required']">Please confirm your password</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Column Layout for Gender and Age -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Gender -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+            <div class="relative">
+              <select formControlName="gender" 
+                      class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm appearance-none"
+                      [class.ring-2.ring-red-500]="f['gender'].touched && f['gender'].errors">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-chevron-down text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['gender'].touched && f['gender'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['gender'].errors?.['required']">Gender is required</div>
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Age</label>
+            <div class="relative">
+              <input type="number" formControlName="age" 
+                     class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                     [class.ring-2.ring-red-500]="f['age'].touched && f['age'].errors"
+                     placeholder="Your age">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <i class="fas fa-birthday-cake text-gray-400"></i>
+              </div>
+            </div>
+            <div *ngIf="f['age'].touched && f['age'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+              <div *ngIf="f['age'].errors?.['required']">Age is required</div>
+              <div *ngIf="f['age'].errors?.['min']">Minimum age is 18</div>
+              <div *ngIf="f['age'].errors?.['max']">Maximum age is 100</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- City -->
+        <div class="relative">
+          <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+          <div class="relative">
+            <input type="text" formControlName="city" 
+                   class="w-full px-4 py-3 border-0 rounded-lg bg-gray-50 focus:ring-2 focus:ring-pink-500 focus:bg-white transition-all duration-200 shadow-sm"
+                   [class.ring-2.ring-red-500]="f['city'].touched && f['city'].errors"
+                   placeholder="Your city">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <i class="fas fa-city text-gray-400"></i>
+            </div>
+          </div>
+          <div *ngIf="f['city'].touched && f['city'].errors" class="text-red-500 text-xs mt-1 animate-fade-in">
+            <div *ngIf="f['city'].errors?.['required']">City is required</div>
+          </div>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <input id="terms" type="checkbox" class="focus:ring-pink-500 h-4 w-4 text-pink-600 border-gray-300 rounded">
+          </div>
+          <div class="ml-3 text-sm">
+            <label for="terms" class="font-medium text-gray-700">I agree to the <a href="#" class="text-pink-600 hover:underline">Terms of Service</a> and <a href="#" class="text-pink-600 hover:underline">Privacy Policy</a></label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" 
+                class="w-full bg-gradient-to-r from-rose-600 to-pink-500 text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:from-rose-700 hover:to-pink-600 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                [disabled]="registerForm.invalid || isSubmitting">
+          <span *ngIf="!isSubmitting" class="flex items-center justify-center">
+            <i class="fas fa-user-plus mr-2"></i> Create Account
+          </span>
+          <span *ngIf="isSubmitting" class="flex items-center justify-center">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Creating your account...
+          </span>
+        </button>
+
+        <!-- Divider -->
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+          </div>
+        </div>
+
+        <!-- Social Login Buttons -->
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+            <i class="fab fa-google text-red-500 mr-2"></i> Google
+          </button>
+          <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+            <i class="fab fa-facebook text-blue-600 mr-2"></i> Facebook
+          </button>
+        </div>
+      </form>
+
+      <!-- Login Link -->
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Already have an account?
+          <a routerLink="/login" class="font-medium text-pink-600 hover:text-pink-500 hover:underline transition">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

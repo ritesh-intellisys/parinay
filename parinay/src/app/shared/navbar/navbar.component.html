@@ -1,0 +1,129 @@
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300 border-b border-gray-100 hover:shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3">
+      <!-- Logo -->
+      <a routerLink="/" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 text-2xl font-bold tracking-wide hover:scale-105 transition-transform duration-200">
+        <span class="inline-block">Parinay</span>
+        <span class="text-xs align-top bg-pink-600 text-white px-1.5 py-0.5 rounded-full ml-1 animate-pulse">Premium</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-8 text-gray-700 font-medium items-center">
+        <a *ngFor="let link of navLinks" 
+           [routerLink]="link.path" 
+           class="relative group transition-colors duration-200 hover:text-pink-600"
+           routerLinkActive="text-pink-600 font-semibold">
+          <span>{{ link.label }}</span>
+          <span *ngIf="link.badge" class="ml-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs px-2 py-0.5 rounded-full">
+            {{ link.badge }}
+          </span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- User Section -->
+      <div class="flex items-center gap-4">
+        <!-- Display when user is logged in -->
+        <div *ngIf="isLoggedIn" class="flex items-center gap-4">
+          <div class="hidden md:block text-gray-700 font-medium">
+            Hello, {{ userDisplayName }}
+          </div>
+          
+          <!-- User Dropdown -->
+          <div class="relative" (click)="toggleDropdown()">
+            <button class="flex items-center gap-2 focus:outline-none">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold">
+                {{ userInitials }}
+              </div>
+              <i class="fas fa-chevron-down text-gray-500 text-xs transition-transform duration-200" 
+                 [class.transform.rotate-180]="dropdownOpen"></i>
+            </button>
+            
+            <!-- Dropdown Menu -->
+            <div *ngIf="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+              <a routerLink="/my-profile" 
+                 class="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+                 (click)="dropdownOpen = false">
+                <i class="fas fa-user mr-2 text-pink-500"></i> My Profile
+              </a>
+              <a (click)="logout()" 
+                 class="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer">
+                <i class="fas fa-sign-out-alt mr-2 text-pink-500"></i> Logout
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display when user is not logged in -->
+        <div *ngIf="!isLoggedIn" class="hidden md:flex gap-4 items-center">
+          <a routerLink="/login" 
+             class="text-gray-700 hover:text-pink-600 font-medium px-3 py-1.5 rounded-lg transition-colors duration-200 hover:bg-gray-50">
+            Login
+          </a>
+          <a routerLink="/register" 
+             class="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-600 text-white px-5 py-2.5 rounded-lg font-medium hover:shadow-lg transition-all duration-300 group">
+            <span class="relative z-10">Register</span>
+            <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button (click)="toggleMenu()" class="md:hidden focus:outline-none transition-all duration-200">
+          <div class="space-y-1.5">
+            <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                  [class]="menuOpen ? 'rotate-45 translate-y-2' : ''"></span>
+            <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                  [class]="menuOpen ? 'opacity-0' : 'opacity-100'"></span>
+            <span class="block w-6 h-0.5 bg-pink-600 transition-all duration-300" 
+                  [class]="menuOpen ? '-rotate-45 -translate-y-2' : ''"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="menuOpen" 
+       class="md:hidden bg-white/95 backdrop-blur-sm px-6 pb-6 space-y-3 animate-fade-in-down border-t border-gray-100">
+    <!-- Navigation Links -->
+    <a *ngFor="let link of navLinks" 
+       [routerLink]="link.path" 
+       (click)="toggleMenu()"
+       class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 border-b border-gray-100">
+      {{ link.label }}
+      <span *ngIf="link.badge" class="ml-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs px-2 py-0.5 rounded-full">
+        {{ link.badge }}
+      </span>
+    </a>
+
+    <!-- Auth Buttons -->
+    <div *ngIf="!isLoggedIn" class="pt-4 border-t border-gray-200 flex flex-col gap-3">
+      <a routerLink="/login" (click)="toggleMenu()" 
+         class="text-center py-2 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        Login
+      </a>
+      <a routerLink="/register" (click)="toggleMenu()" 
+         class="text-center py-2.5 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg font-medium hover:shadow-md transition-all duration-300">
+        Register
+      </a>
+    </div>
+
+    <!-- User Menu for Mobile -->
+    <div *ngIf="isLoggedIn" class="pt-4 border-t border-gray-200 space-y-3">
+      <div class="flex items-center gap-3 py-2">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+          {{ userInitials }}
+        </div>
+        <div class="text-gray-700 font-medium">Hello, {{ userDisplayName }}</div>
+      </div>
+      <a routerLink="/my-profile" (click)="toggleMenu()" 
+         class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200">
+        <i class="fas fa-user mr-2 text-pink-500"></i> My Profile
+      </a>
+      <a (click)="logout(); toggleMenu()" 
+         class="block py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 cursor-pointer">
+        <i class="fas fa-sign-out-alt mr-2 text-pink-500"></i> Logout
+      </a>
+    </div>
+  </div>
+</header>

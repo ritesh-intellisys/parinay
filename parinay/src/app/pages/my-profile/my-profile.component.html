@@ -1,0 +1,288 @@
+<div class="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Profile Header -->
+      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 transition-all duration-300 hover:shadow-3xl">
+        <div class="relative">
+          <div class="bg-gradient-to-r from-rose-600 to-pink-500 h-48 w-full">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+          
+          <div class="absolute top-6 right-6 flex gap-3">
+            <button *ngIf="!isEditing" (click)="toggleEdit()" 
+                    class="bg-white/90 backdrop-blur-sm text-pink-600 px-5 py-2.5 rounded-xl shadow-lg hover:bg-white transition flex items-center gap-2">
+              <i class="fas fa-edit"></i> Edit Profile
+            </button>
+            <div *ngIf="isEditing" class="flex gap-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-xl shadow-lg">
+              <button (click)="toggleEdit()" 
+                      class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+                Cancel
+              </button>
+              <button type="submit" form="profileForm" [disabled]="profileForm.invalid || isSubmitting" 
+                      class="bg-gradient-to-r from-rose-600 to-pink-500 text-white px-5 py-2 rounded-lg shadow hover:from-rose-700 hover:to-pink-600 transition disabled:opacity-70 flex items-center gap-2">
+                <span *ngIf="!isSubmitting"><i class="fas fa-save"></i> Save</span>
+                <span *ngIf="isSubmitting">
+                  <i class="fas fa-spinner fa-spin"></i> Saving...
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="px-10 pb-10 relative">
+          <div class="flex flex-col md:flex-row items-start md:items-end -mt-20 gap-6">
+            <div class="relative group">
+              <div class="absolute -inset-1 bg-gradient-to-r from-rose-600 to-pink-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+              <div class="relative">
+                <img class="h-40 w-40 rounded-full border-4 border-white object-cover shadow-xl" 
+                     [src]="user?.photoURL || 'https://ui-avatars.com/api/?background=ff6b81&color=fff&name='+(user?.fullName || '')" alt="Profile photo">
+                <button *ngIf="isEditing" (click)="uploadPhoto()" 
+                        class="absolute bottom-2 right-2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition transform hover:scale-110">
+                  <i class="fas fa-camera text-pink-500 text-lg"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="flex-1 md:ml-8">
+              <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                  <h1 class="text-4xl font-bold text-gray-800">
+                    <span *ngIf="!isEditing">{{ user?.fullName || 'Your Name' }}</span>
+                    <input *ngIf="isEditing" formControlName="fullName" type="text" 
+                           class="bg-transparent border-0 border-b-2 border-pink-500 focus:ring-0 p-1 text-4xl font-bold w-full">
+                  </h1>
+                  <p class="text-gray-600 mt-2">
+                    <span *ngIf="!isEditing" class="flex items-center gap-3">
+                      <span *ngIf="user?.age" class="flex items-center">
+                        <i class="fas fa-birthday-cake text-pink-500 mr-1"></i> {{ user?.age }} years
+                      </span>
+                      <span *ngIf="user?.city" class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> {{ user?.city }}
+                      </span>
+                    </span>
+                    <span *ngIf="isEditing" class="flex items-center gap-4 mt-3">
+                      <div class="relative">
+                        <i class="fas fa-birthday-cake absolute left-2 top-3 text-pink-500"></i>
+                        <input formControlName="age" type="number" placeholder="Age"
+                               class="pl-8 w-24 border-0 border-b-2 border-pink-500 focus:ring-0 p-1">
+                      </div>
+                      <div class="relative">
+                        <i class="fas fa-map-marker-alt absolute left-2 top-3 text-pink-500"></i>
+                        <input formControlName="city" type="text" placeholder="City"
+                               class="pl-8 border-0 border-b-2 border-pink-500 focus:ring-0 p-1 min-w-[180px]">
+                      </div>
+                    </span>
+                  </p>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                  <button (click)="logout()" 
+                          class="text-pink-600 hover:text-pink-800 flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-pink-50 transition">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                  </button>
+                  <span *ngIf="user?.premium" class="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                    <i class="fas fa-crown"></i> Premium
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Profile Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- About Section -->
+          <div class="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                <i class="fas fa-user text-pink-500"></i> About Me
+              </h2>
+              <div class="flex items-center gap-2 text-sm text-gray-500">
+                <i class="fas fa-id-card"></i> ID: {{ user?.uid?.substring(0, 8) || 'N/A' }}
+              </div>
+            </div>
+            
+            <p *ngIf="!isEditing" class="text-gray-700 leading-relaxed">
+              {{ user?.about || 'Tell others about yourself...' }}
+            </p>
+            <textarea *ngIf="isEditing" formControlName="about" rows="5" placeholder="Write something about yourself..."
+                      class="w-full border-2 border-gray-200 rounded-xl p-4 focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-700 leading-relaxed"></textarea>
+          </div>
+  
+          <!-- Basic Information -->
+          <div class="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <i class="fas fa-info-circle text-pink-500"></i> Basic Information
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Personal Details -->
+              <div class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Gender</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.gender || 'Not specified' }}</p>
+                  <select *ngIf="isEditing" formControlName="gender" 
+                          class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Religion</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.religion || 'Not specified' }}</p>
+                  <input *ngIf="isEditing" formControlName="religion" type="text" placeholder="Your religion"
+                         class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Height</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.height || 'Not specified' }}</p>
+                  <input *ngIf="isEditing" formControlName="height" type="text" placeholder="e.g. 5'8\"
+                         class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                </div>
+              </div>
+              
+              <!-- Family & Background -->
+              <div class="space-y-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Caste</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.caste || 'Not specified' }}</p>
+                  <input *ngIf="isEditing" formControlName="caste" type="text" placeholder="Your caste"
+                         class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Mother Tongue</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.motherTongue || 'Not specified' }}</p>
+                  <input *ngIf="isEditing" formControlName="motherTongue" type="text" placeholder="Your mother tongue"
+                         class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-500 mb-1">Marital Status</label>
+                  <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.maritalStatus || 'Not specified' }}</p>
+                  <select *ngIf="isEditing" formControlName="maritalStatus" 
+                          class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                    <option value="">Select Status</option>
+                    <option value="Never Married">Never Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Separated">Separated</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Contact Information -->
+          <div class="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <i class="fas fa-envelope text-pink-500"></i> Contact
+            </h2>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Email</label>
+                <p class="font-medium text-gray-700 break-all">{{ user?.email }}</p>
+              </div>
+              
+              <div *ngIf="user?.phone">
+                <label class="block text-sm font-medium text-gray-500 mb-1">Phone</label>
+                <p class="font-medium text-gray-700">{{ user?.phone }}</p>
+              </div>
+              
+              <div *ngIf="isEditing">
+                <label class="block text-sm font-medium text-gray-500 mb-1">Phone Number</label>
+                <input formControlName="phone" type="tel" placeholder="+91 9876543210"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Professional Information -->
+          <div class="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <i class="fas fa-briefcase text-pink-500"></i> Professional
+            </h2>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Occupation</label>
+                <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.occupation || 'Not specified' }}</p>
+                <input *ngIf="isEditing" formControlName="occupation" type="text" placeholder="Your occupation"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Education</label>
+                <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.education || 'Not specified' }}</p>
+                <input *ngIf="isEditing" formControlName="education" type="text" placeholder="Your education"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Annual Income</label>
+                <p *ngIf="!isEditing" class="font-medium text-gray-700">{{ user?.income || 'Not specified' }}</p>
+                <input *ngIf="isEditing" formControlName="income" type="text" placeholder="Your annual income"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Interests & Preferences -->
+          <div class="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <i class="fas fa-heart text-pink-500"></i> Preferences
+            </h2>
+            
+            <div *ngIf="!isEditing" class="flex flex-wrap gap-2">
+              <span *ngIf="user?.preferredAge" class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">
+                Age: {{ user?.preferredAge }}
+              </span>
+              <span *ngIf="user?.preferredHeight" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                Height: {{ user?.preferredHeight }}
+              </span>
+              <span *ngIf="user?.preferredReligion" class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                {{ user?.preferredReligion }}
+              </span>
+              <span *ngIf="!user?.preferredAge && !user?.preferredHeight && !user?.preferredReligion" class="text-gray-500">
+                No preferences set
+              </span>
+            </div>
+            
+            <div *ngIf="isEditing" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Preferred Age Range</label>
+                <input formControlName="preferredAge" type="text" placeholder="e.g. 25-30"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Preferred Height</label>
+                <input formControlName="preferredHeight" type="text" placeholder="e.g. 5'4\"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-500 mb-1">Preferred Religion</label>
+                <input formControlName="preferredReligion" type="text" placeholder="Any specific religion"
+                       class="w-full border-2 border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Hidden form for submission -->
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="profileForm" class="hidden"></form>
+    </div>
+  </div>
